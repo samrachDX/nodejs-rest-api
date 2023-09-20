@@ -1,0 +1,23 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.samrachdx }} -p ${{ secrets.Chan@011232136 }}
+
+      - name: Build Docker image
+        run: docker build -t samrach/nodejs-rest-api .
+
+      - name: Push Docker image
+        run: docker push samrach/nodejs-rest-api
