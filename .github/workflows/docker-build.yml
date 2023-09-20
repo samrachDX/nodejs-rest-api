@@ -1,6 +1,14 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Set up Node.js
         uses: actions/setup-node@v3
